@@ -201,8 +201,8 @@ block script
         },
         async init () {
           try {
-            const res = await this.getCsv('https://docs.google.com/spreadsheets/d/e/2PACX-1vRA9QJDFGAuHqHe6hNfjTMLDfYvEbPmOH17743KVG6L1KCV92J9mEmXoLvF8Xu-CAf-HeB1NrM87Sf2/pub?gid=929015231&single=true&output=csv')
-            this.vcard = res[0]
+            const res = await this.getCsv('https://gist.githubusercontent.com/yuanchi17/df7bdf185fd61b39f5c585e78ea39cc9/raw/yuanchi-intro.csv')
+            this.$set(this, 'vcard', res[0])
           } catch (err) {
             console.log(err)
             throw err

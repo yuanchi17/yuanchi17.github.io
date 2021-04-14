@@ -4,6 +4,8 @@ block beforehtml
   - const title = "YUAN"
 
 block style
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&display=swap">
   style
     :sass
       [v-cloak]
@@ -12,6 +14,8 @@ block style
       $color_white: #ffffff
       $font_size_small: 14px
 
+      body 
+        background-color: $color_blue
       @mixin size($w, $h)
         width: $w
         height: $h
@@ -41,33 +45,23 @@ block style
             color: gray
 
       section#home
-        height: calc(100vh - 55px)
-        max-height: 570px
-        background-color: $color_blue
         h1
           color: $color_white
-          &:after
-            border-top: solid
-            content: " "
-            display: block
-            left: 110px
-            position: absolute
-            top: 24px
-            width: 80px
-          &:before
-            border-top: solid
-            content: " "
-            display: block
-            position: absolute
-            right: 110px
-            top: 24px
-            width: 80px
         .contact
           a
             font-size: 28px
             color: rgba(gray, 0.7)
             i:hover
               color: gray
+        #title
+          .title-name 
+            font-family: 'PT Serif', serif
+          hr
+            border-color: white
+            border-top-width: 2px
+          @media only screen and (max-width:360px)
+            hr
+              display: none
         .more
           font-weight: initial
           color: $color_white
@@ -95,7 +89,7 @@ block style
           transition: 1s
           & .tri
             +size(150px, 200px)
-            background-color: darken($color_blue, 5)
+            background-color: darken(#333, 3)
             position: absolute
             &.tri1
               bottom: 0px
@@ -104,10 +98,7 @@ block style
               right: 8px
               top: 0px
               transform: rotate(-18deg) translate(85%, 5%)
-
-        .vcard-bottom
-          transition: 1s 0.5s
-          & .bottom-texts
+          & .texts
             .vcard-title
               color: rgba($color_blue, 0.5)
               font-weight: bold
@@ -120,10 +111,6 @@ block style
             color: rgba($color_blue, 0.5)
             font-size: $font_size_small
             position: absolute
-        .vcard-top
-          & .top-texts
-            h1
-              font-size: 50px
 
       section#home-footer
         h4
@@ -135,8 +122,11 @@ block content
   include /navbar
   #app.content(v-cloak)
     section#home.d-flex.flex-column.align-items-center
-      img.mt-5.mb-3.animate__animated.animate__fadeIn.animate__delay-1s(src="https://i.imgur.com/f4j0B1I.jpg", alt="個人照片")
-      h1.m-0.text-center.animate__animated.animate__rotateIn YUAN
+      img.mt-4.mb-3.animate__animated.animate__fadeIn.animate__delay-1s(src="https://i.imgur.com/f4j0B1I.jpg", alt="個人照片")
+      #title.d-flex.justify-content-center.w-100
+        hr.w-25.my-auto.mx-0
+        h1.m-0.mx-3.animate__animated.animate__rotateIn.title-name Y U A N
+        hr.w-25.my-auto.mx-0
       .contact.animate__animated.animate__fadeIn.animate__delay-1s
         a.mx-1(href="https://www.youtube.com/channel/UC0Wem7bts97LKT-2mb3c4Kg" target="_blank")
           i.fa.fa-youtube-square
@@ -144,20 +134,10 @@ block content
           i.fa.fa-github-square
         a.mx-1(href="mailto:joyceleeya@gmail.com" target="_blank")
           i.fa.fa-envelope-square
-      .more.animate__animated.animate__pulse.animate__infinite.mt-auto(type="button" @click="scrollTo(570)")
-        p.pb-3 more
-        hr
+
     section#home-vcard.py-3.d-flex.flex-column.align-items-center
-      .card.vcard-top.d-flex.flex-column.justify-content-center
-        .top-texts.text-center
-          h1.name.m-0 {{ vcard.title }}
-          p.pt-2.m-0 Yuan-Chi Lee
-          a.pt-2.m-0(href="mailto:joyceleeya@gmail.com" target="_blank") joyceleeya@gmail.com
-        .tri.tri1
-        .tri.tri2
-      div <br>
-      .card.vcard-bottom
-        .bottom-texts.p-5
+      .card
+        .texts.p-5
           h2.name.m-0.px-1 Yuan-Chi Lee
           p.vcard-title.m-0.p-1.pb-2 {{ vcard.company }} {{ vcard.position }}
           p.vcard-body.m-0.px-1.pt-2 {{ vcard.text }}
@@ -166,15 +146,6 @@ block content
           span.pl-1 作品集
         .tri.tri1
         .tri.tri2
-    section#home-footer.d-flex.align-items-center.justify-content-center
-      h4.m-0.mr-3.text-center(type="button" @click="scrollTo(0)") YUAN
-      .contact
-        a.mx-1(href="https://www.youtube.com/channel/UC0Wem7bts97LKT-2mb3c4Kg" target="_blank")
-          i.fa.fa-youtube-square
-        a.mx-1(href="https://github.com/yuanchi17" target="_blank")
-          i.fa.fa-github-square
-        a.mx-1(href="mailto:joyceleeya@gmail.com" target="_blank")
-          i.fa.fa-envelope-square
 
 block script
   script.
@@ -208,9 +179,6 @@ block script
             throw err
           }
         },
-        scrollTo (height) {
-          window.scrollTo({ top: height, behavior: 'smooth'})
-        }
       },
     })
 

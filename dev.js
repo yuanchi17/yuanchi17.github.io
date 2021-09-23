@@ -35,7 +35,7 @@ async function main () {
   log('staticServer Done')
   log('進入首頁', baseUrl)
 
-  watch(['./src', './public'], { recursive: true }, async (evt, name) => {
+  watch(['./src'], { recursive: true }, async (evt, name) => {
     const match = name.match(/^src[\\/](.+)\.pug$/)
     await build()
     if (!match) log(`${name} changed.`)

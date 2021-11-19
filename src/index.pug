@@ -25,12 +25,16 @@ block style
 
       #app
         height: 100%
-        img
-          width: 250px
-          height: 250px
-          object-fit: cover
+        .img-area
           border-radius: 50%
           filter: drop-shadow(0px 0px 10px #ffffff80)
+          height: 250px
+          overflow: hidden
+          width: 250px
+          img
+            height: 100%
+            object-fit: cover
+            width: 100%
 
       section#home
         height: calc(100vh - 55px)
@@ -52,12 +56,11 @@ block style
             transform: scale(1.1)
             transition: 0.5s
 
-
 block content
   include /navbar
   #app.content(v-cloak)
     section#home.min-vh-100.d-flex.flex-column.align-items-center
-      img.mt-4.mb-3.animate__animated.animate__fadeIn.animate__delay-1s(src="https://i.imgur.com/f4j0B1I.jpg", alt="個人照片")
+      .img-area.mt-4.mb-3: img.animate__animated.animate__fadeIn.animate__delay-1s(src="https://i.imgur.com/f4j0B1I.jpg", alt="個人照片")
       h1.m-0.text-center.animate__animated.animate__rotateIn — YUAN —
       #button-area.d-flex.flex-column.my-3.animate__animated.animate__fadeIn.animate__delay-1s
         a.btn.btn-block.my-2.px-3.d-flex(href="/works/" target="_blank"): p.my-auto.mx-auto 作品集

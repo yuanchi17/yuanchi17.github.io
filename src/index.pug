@@ -30,6 +30,7 @@ block style
           height: 250px
           object-fit: cover
           border-radius: 50%
+          filter: drop-shadow(0px 0px 10px #ffffff80)
 
       section#home
         height: calc(100vh - 55px)
@@ -59,10 +60,10 @@ block content
       img.mt-4.mb-3.animate__animated.animate__fadeIn.animate__delay-1s(src="https://i.imgur.com/f4j0B1I.jpg", alt="個人照片")
       h1.m-0.text-center.animate__animated.animate__rotateIn — YUAN —
       #button-area.d-flex.flex-column.my-3.animate__animated.animate__fadeIn.animate__delay-1s
+        a.btn.btn-block.my-2.px-3.d-flex(href="/works/" target="_blank"): p.my-auto.mx-auto 作品集
         a.btn.btn-block.my-2.px-3.d-flex(href="https://store.line.me/stickershop/author/2723630/zh-Hant" target="_blank"): p.my-auto.mx-auto LINE 貼圖
         a.btn.btn-block.my-2.px-3.d-flex(href="https://www.youtube.com/channel/UC0Wem7bts97LKT-2mb3c4Kg" target="_blank"): p.my-auto.mx-auto YouTube
         a.btn.btn-block.my-2.px-3.d-flex(href="https://github.com/yuanchi17" target="_blank"): p.my-auto.mx-auto GitHub
-        a.btn.btn-block.my-2.px-3.d-flex(href="mailto:joyceleeya@gmail.com" target="_blank"): p.my-auto.mx-auto Email
 
 block script
   script.
